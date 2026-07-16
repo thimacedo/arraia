@@ -57,6 +57,7 @@ import {
   buildWhatsAppShareUrl,
   downloadJson,
 } from "@/lib/party"
+import { parseWhatsAppText } from "@/lib/parser"
 
 const STEPS = [
   { n: 1, label: "Presença", icon: Users },
@@ -122,6 +123,7 @@ function AdminPanel({
   onClose: () => void
 }) {
   const [tab, setTab] = useState("presenca")
+  const [importText, setImportText] = useState("")
 
   // ----- Estados de edição inline para Presença -----
   const [editPresencaId, setEditPresencaId] = useState<string | null>(null)
@@ -301,6 +303,23 @@ function AdminPanel({
     toast.success("Item do balaio removido.")
   }
 
+  const handleImportText = () => {
+    if (!importText.trim()) {
+      toast.error("Cole o texto da lista primeiro.")
+      return
+    }
+    const result = parseWhatsAppText(importText, comidas, balaio)
+    if (result) {
+      onChangePresenca(result.presenca)
+      onChangeComidas(result.comidas)
+      onChangeBalaio(result.balaio)
+      toast.success("Listas importadas com sucesso! O banco foi atualizado.")
+      setImportText("")
+    } else {
+      toast.error("Erro ao interpretar o texto. Verifique o formato.")
+    }
+  }
+
   return (
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-stretch sm:items-center justify-center sm:p-4">
       <div className="bg-amber-50 w-full sm:max-w-5xl sm:rounded-xl shadow-2xl flex flex-col max-h-screen sm:max-h-[92vh] overflow-hidden">
@@ -350,6 +369,10 @@ function AdminPanel({
                   <Badge className="ml-1 bg-orange-100 text-orange-800 hover:bg-orange-100 border-0 text-xs">
                     {balaio.length}
                   </Badge>
+                </TabsTrigger>
+                <TabsTrigger value="import" className="gap-1.5">
+                  <Download className="w-4 h-4" />
+                  <span className="hidden lg:inline">Importar</span>
                 </TabsTrigger>
               </TabsList>
             </div>
@@ -723,6 +746,34 @@ function AdminPanel({
                         </li>
                       ))}
                     </ul>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              {/* ===== Tab Importar ===== */}
+              <TabsContent value="import" className="m-0 p-4 sm:p-6 space-y-4">
+                <Card className="border-2 border-orange-200">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-base flex items-center gap-2">
+                      <Download className="w-4 h-4 text-orange-600" />
+                      Importar do WhatsApp
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <p className="text-sm text-muted-foreground">
+                      Cole a lista completa enviada no WhatsApp aqui. O sistema vai extrair as confirmações e sobrescrever o banco de dados (Presença, Comidas e Balaio). 
+                      <strong> Importante:</strong> Certifique-se de colar a lista inteira, desde "LISTA DE PRESENÇA" até o final do Balaio.
+                    </p>
+                    <textarea
+                      value={importText}
+                      onChange={(e) => setImportText(e.target.value)}
+                      placeholder="Cole o texto aqui..."
+                      className="w-full h-64 p-3 border border-orange-200 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm font-mono"
+                    />
+                    <Button onClick={handleImportText} className="bg-orange-600 hover:bg-orange-700 text-white w-full h-10">
+                      <Download className="w-4 h-4 mr-2" />
+                      Sincronizar Banco de Dados
+                    </Button>
                   </CardContent>
                 </Card>
               </TabsContent>
