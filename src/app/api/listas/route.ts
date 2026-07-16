@@ -9,9 +9,9 @@ const REDIS_KEY = "arraia:state"
 export async function GET() {
   try {
     if (redis) {
-      const state = await redis.get(REDIS_KEY)
-      if (state) {
-        return NextResponse.json({ ok: true, state })
+      const stateString = await redis.get(REDIS_KEY)
+      if (stateString) {
+        return NextResponse.json({ ok: true, state: JSON.parse(stateString) })
       }
     }
     return NextResponse.json({ ok: true, state: null })
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
 
     // Grava no Redis como fonte de verdade (se configurado)
     if (redis) {
-      await redis.set(REDIS_KEY, stateToSave)
+      await redis.set(REDIS_KEY, JSON.stringify(stateToSave))
     }
 
     // Grava em /tmp como backup best-effort

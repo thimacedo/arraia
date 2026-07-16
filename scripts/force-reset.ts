@@ -5,7 +5,7 @@ const REDIS_KEY = "arraia:state"
 
 async function reset() {
   if (!redis) {
-    console.error("Erro: Variáveis de ambiente do Redis não configuradas (KV_REST_API_URL e KV_REST_API_TOKEN).")
+    console.error("Erro: Variável de ambiente do Redis não configurada (ARRAIA_REDIS_URL ou REDIS_URL).")
     process.exit(1)
   }
 
@@ -17,8 +17,9 @@ async function reset() {
   }
 
   console.log("Subindo estado atualizado para o Redis...")
-  await redis.set(REDIS_KEY, stateToSave)
+  await redis.set(REDIS_KEY, JSON.stringify(stateToSave))
   console.log("✅ Banco de dados atualizado com sucesso!")
+  process.exit(0)
 }
 
 reset()
