@@ -758,7 +758,24 @@ export default function Home() {
   const [nome, setNome] = useState("")
   const [familiares, setFamiliares] = useState("")
 
-  // Hidratar do localStorage
+  // Sync do servidor
+  const syncFromServer = async () => {
+    try {
+      const res = await fetch("/api/listas")
+      if (res.ok) {
+        const { state } = await res.json()
+        if (state) {
+          setPresenca(state.presenca || [])
+          setComidas(state.comidas || INITIAL_COMIDAS)
+          setBalaio(state.balaio || INITIAL_BALAIO)
+        }
+      }
+    } catch (err) {
+      console.error("Erro ao sincronizar do servidor:", err)
+    }
+  }
+
+  // Hidratar do localStorage e sincronizar
   useEffect(() => {
     const p = loadPresenca()
     const c = loadComidas()
@@ -776,6 +793,13 @@ export default function Home() {
       setFamiliares(u.familiares)
     }
     setHydrated(true)
+    
+    // Busca inicial do servidor após hidratar
+    syncFromServer()
+    
+    // Sincronização periódica (10s)
+    const interval = setInterval(syncFromServer, 10000)
+    return () => clearInterval(interval)
   }, [])
 
   // Persistir

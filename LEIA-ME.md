@@ -103,7 +103,18 @@ npm run start
 
 ## Persistência de dados
 
-Os dados das listas são salvos no **localStorage** do navegador (com versionamento — atualmente v8). Cada usuário vê sua própria cópia local, e pode exportar para JSON ou enviar para o WhatsApp usando o botão no topo da página.
+Os dados são salvos em dois lugares:
+
+1. **Redis (Upstash), compartilhado entre todos os dispositivos** — fonte de verdade. Toda alteração é enviada para `POST /api/listas`, que grava no Redis; ao abrir a página, o app busca em `GET /api/listas` o estado mais atual e sincroniza a cada 10s para pegar edições feitas por outras pessoas.
+2. **localStorage do navegador** — cache local (funciona offline / carregamento instantâneo), com versionamento (atualmente v8). Ao reconectar, o estado do Redis sobrescreve o cache local.
+
+### Configurando o Redis (uma vez, no projeto Vercel)
+
+1. No dashboard do projeto na Vercel, vá em **Storage → Create Database → Upstash for Redis** (ou instale a integração "Upstash" no [Vercel Marketplace](https://vercel.com/marketplace)).
+2. Conecte o banco ao projeto `arraia` — a Vercel injeta automaticamente as env vars `KV_REST_API_URL` e `KV_REST_API_TOKEN` (ou, se você criar direto no console da Upstash, use `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`).
+3. Redeploy. Sem essas variáveis configuradas, `/api/listas` responde com erro 503 e o app continua funcionando só com o localStorage local (sem sincronizar entre dispositivos).
+
+> ⚠️ Antes dessa mudança, o backend gravava um JSON em `/tmp` no servidor — que é apagado a qualquer momento em ambientes serverless (Vercel). Isso fazia com que os registros parecessem "sumir": cada navegador só via a própria cópia local, sem nenhuma sincronização real entre convidados.
 
 ## Estado atual das listas (v8)
 

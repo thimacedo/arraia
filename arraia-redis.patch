@@ -1,0 +1,246 @@
+diff --git a/LEIA-ME.md b/LEIA-ME.md
+index 2ebcb6b..7e1a4c1 100644
+--- a/LEIA-ME.md
++++ b/LEIA-ME.md
+@@ -103,7 +103,18 @@ npm run start
+ 
+ ## Persistência de dados
+ 
+-Os dados das listas são salvos no **localStorage** do navegador (com versionamento — atualmente v8). Cada usuário vê sua própria cópia local, e pode exportar para JSON ou enviar para o WhatsApp usando o botão no topo da página.
++Os dados são salvos em dois lugares:
++
++1. **Redis (Upstash), compartilhado entre todos os dispositivos** — fonte de verdade. Toda alteração é enviada para `POST /api/listas`, que grava no Redis; ao abrir a página, o app busca em `GET /api/listas` o estado mais atual e sincroniza a cada 10s para pegar edições feitas por outras pessoas.
++2. **localStorage do navegador** — cache local (funciona offline / carregamento instantâneo), com versionamento (atualmente v8). Ao reconectar, o estado do Redis sobrescreve o cache local.
++
++### Configurando o Redis (uma vez, no projeto Vercel)
++
++1. No dashboard do projeto na Vercel, vá em **Storage → Create Database → Upstash for Redis** (ou instale a integração "Upstash" no [Vercel Marketplace](https://vercel.com/marketplace)).
++2. Conecte o banco ao projeto `arraia` — a Vercel injeta automaticamente as env vars `KV_REST_API_URL` e `KV_REST_API_TOKEN` (ou, se você criar direto no console da Upstash, use `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`).
++3. Redeploy. Sem essas variáveis configuradas, `/api/listas` responde com erro 503 e o app continua funcionando só com o localStorage local (sem sincronizar entre dispositivos).
++
++> ⚠️ Antes dessa mudança, o backend gravava um JSON em `/tmp` no servidor — que é apagado a qualquer momento em ambientes serverless (Vercel). Isso fazia com que os registros parecessem "sumir": cada navegador só via a própria cópia local, sem nenhuma sincronização real entre convidados.
+ 
+ ## Estado atual das listas (v8)
+ 
+diff --git a/package.json b/package.json
+index 1f3c2e3..1d5f8b3 100644
+--- a/package.json
++++ b/package.json
+@@ -9,6 +9,7 @@
+     "lint": "next lint"
+   },
+   "dependencies": {
++    "@upstash/redis": "^1.34.3",
+     "@radix-ui/react-label": "^2.1.7",
+     "@radix-ui/react-separator": "^1.1.7",
+     "@radix-ui/react-slot": "^1.2.3",
+diff --git a/src/app/api/listas/route.ts b/src/app/api/listas/route.ts
+index 6c39ba6..baebc43 100644
+--- a/src/app/api/listas/route.ts
++++ b/src/app/api/listas/route.ts
+@@ -1,49 +1,92 @@
+ import { NextRequest, NextResponse } from "next/server"
+ import { promises as fs } from "fs"
+ import path from "path"
++import { redis, FESTA_STATE_KEY } from "@/lib/redis"
+ 
+ const DOWNLOAD_DIR = process.env.DOWNLOAD_DIR || "/tmp/festa-junina"
+ 
++type FestaState = {
++  geradoEm: string
++  presenca: unknown[]
++  comidas: unknown[]
++  balaio: unknown[]
++}
++
++// Lê o estado atual, compartilhado entre todos os dispositivos.
++export async function GET() {
++  if (!redis) {
++    return NextResponse.json(
++      {
++        ok: false,
++        error:
++          "Redis não configurado. Defina KV_REST_API_URL/KV_REST_API_TOKEN (ou UPSTASH_REDIS_REST_URL/UPSTASH_REDIS_REST_TOKEN).",
++      },
++      { status: 503 }
++    )
++  }
++
++  try {
++    const state = await redis.get<FestaState>(FESTA_STATE_KEY)
++    return NextResponse.json({ ok: true, state: state ?? null })
++  } catch (e) {
++    return NextResponse.json({ ok: false, error: String(e) }, { status: 500 })
++  }
++}
++
+ export async function POST(req: NextRequest) {
+   try {
+     const body = await req.json()
+     const { presenca = [], comidas = [], balaio = [] } = body
+ 
+-    await fs.mkdir(DOWNLOAD_DIR, { recursive: true })
++    const state: FestaState = {
++      geradoEm: new Date().toISOString(),
++      presenca,
++      comidas,
++      balaio,
++    }
++
++    // Fonte de verdade compartilhada: Redis (Upstash).
++    if (redis) {
++      await redis.set(FESTA_STATE_KEY, state)
++    }
+ 
+-    // Salva tudo em um único JSON
+-    const jsonPath = path.join(DOWNLOAD_DIR, "festa-junina.json")
+-    await fs.writeFile(
+-      jsonPath,
+-      JSON.stringify(
++    // Backup best-effort em disco (útil em dev local; em produção na Vercel
++    // isso é efêmero e não deve ser usado como fonte de dados).
++    try {
++      await fs.mkdir(DOWNLOAD_DIR, { recursive: true })
++      const jsonPath = path.join(DOWNLOAD_DIR, "festa-junina.json")
++      await fs.writeFile(jsonPath, JSON.stringify(state, null, 2), "utf-8")
++
++      const mdLines: string[] = []
++      mdLines.push("# Lista de Presença — Festa Junina\n")
++      mdLines.push(`Gerado em: ${new Date().toLocaleString("pt-BR")}\n`)
++      mdLines.push(`Total de responsáveis: ${presenca.length}\n`)
++      mdLines.push("")
++      mdLines.push("| # | Responsável | Familiares |")
++      mdLines.push("|---|-------------|------------|")
++      presenca.forEach((p: { nome: string; familiares: string }, i: number) => {
++        const fam = (p.familiares || "").trim() || "—"
++        mdLines.push(`| ${i + 1} | ${p.nome} | ${fam} |`)
++      })
++      const mdPath = path.join(DOWNLOAD_DIR, "presenca.md")
++      await fs.writeFile(mdPath, mdLines.join("\n"), "utf-8")
++    } catch {
++      // Ignorado: em produção serverless o filesystem é efêmero/read-only
++      // em alguns ambientes. O Redis acima já é a fonte de verdade.
++    }
++
++    if (!redis) {
++      return NextResponse.json(
+         {
+-          geradoEm: new Date().toISOString(),
+-          presenca,
+-          comidas,
+-          balaio,
++          ok: false,
++          error:
++            "Redis não configurado — os dados NÃO foram persistidos de forma compartilhada.",
+         },
+-        null,
+-        2
+-      ),
+-      "utf-8"
+-    )
++        { status: 503 }
++      )
++    }
+ 
+-    // Salva a lista de presença em Markdown
+-    const mdLines: string[] = []
+-    mdLines.push("# Lista de Presença — Festa Junina\n")
+-    mdLines.push(`Gerado em: ${new Date().toLocaleString("pt-BR")}\n`)
+-    mdLines.push(`Total de responsáveis: ${presenca.length}\n`)
+-    mdLines.push("")
+-    mdLines.push("| # | Responsável | Familiares |")
+-    mdLines.push("|---|-------------|------------|")
+-    presenca.forEach((p: { nome: string; familiares: string }, i: number) => {
+-      const fam = (p.familiares || "").trim() || "—"
+-      mdLines.push(`| ${i + 1} | ${p.nome} | ${fam} |`)
+-    })
+-    const mdPath = path.join(DOWNLOAD_DIR, "presenca.md")
+-    await fs.writeFile(mdPath, mdLines.join("\n"), "utf-8")
+-
+-    return NextResponse.json({ ok: true, files: [jsonPath, mdPath] })
++    return NextResponse.json({ ok: true })
+   } catch (e) {
+     return NextResponse.json({ ok: false, error: String(e) }, { status: 500 })
+   }
+diff --git a/src/app/page.tsx b/src/app/page.tsx
+index 069de88..ca5b5b9 100644
+--- a/src/app/page.tsx
++++ b/src/app/page.tsx
+@@ -758,7 +758,8 @@ export default function Home() {
+   const [nome, setNome] = useState("")
+   const [familiares, setFamiliares] = useState("")
+ 
+-  // Hidratar do localStorage
++  // Hidratar do localStorage (rápido, local) e depois do servidor
++  // (Redis — fonte de verdade compartilhada entre todos os dispositivos).
+   useEffect(() => {
+     const p = loadPresenca()
+     const c = loadComidas()
+@@ -776,8 +777,40 @@ export default function Home() {
+       setFamiliares(u.familiares)
+     }
+     setHydrated(true)
++
++    // Busca o estado compartilhado do servidor. Se existir, ele prevalece
++    // sobre o que estava salvo apenas neste navegador.
++    fetch("/api/listas")
++      .then((r) => r.json())
++      .then((data) => {
++        if (data?.ok && data.state) {
++          if (Array.isArray(data.state.presenca)) setPresenca(data.state.presenca)
++          if (Array.isArray(data.state.comidas)) setComidas(data.state.comidas)
++          if (Array.isArray(data.state.balaio)) setBalaio(data.state.balaio)
++        }
++      })
++      .catch(() => {})
+   }, [])
+ 
++  // Sincroniza periodicamente com o servidor para pegar atualizações feitas
++  // por outros dispositivos (ex.: alguém assinou um item pelo celular).
++  useEffect(() => {
++    if (!hydrated) return
++    const interval = setInterval(() => {
++      fetch("/api/listas")
++        .then((r) => r.json())
++        .then((data) => {
++          if (data?.ok && data.state) {
++            if (Array.isArray(data.state.presenca)) setPresenca(data.state.presenca)
++            if (Array.isArray(data.state.comidas)) setComidas(data.state.comidas)
++            if (Array.isArray(data.state.balaio)) setBalaio(data.state.balaio)
++          }
++        })
++        .catch(() => {})
++    }, 10000)
++    return () => clearInterval(interval)
++  }, [hydrated])
++
+   // Persistir
+   useEffect(() => {
+     if (hydrated) savePresenca(presenca)
+diff --git a/src/lib/redis.ts b/src/lib/redis.ts
+new file mode 100644
+index 0000000..1f548bd
+--- /dev/null
++++ b/src/lib/redis.ts
+@@ -0,0 +1,21 @@
++import { Redis } from "@upstash/redis"
++
++// Cliente Redis (Upstash) — usado como banco compartilhado da lista da festa.
++// As variáveis KV_REST_API_URL / KV_REST_API_TOKEN são injetadas automaticamente
++// pela Vercel quando você conecta uma integração "Upstash for Redis" (ou "Vercel KV")
++// ao projeto. UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN também são aceitas
++// caso você prefira criar o banco direto no console da Upstash.
++function getRedis(): Redis | null {
++  const url =
++    process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL
++  const token =
++    process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN
++
++  if (!url || !token) return null
++  return new Redis({ url, token })
++}
++
++export const redis = getRedis()
++
++// Chave única onde o snapshot completo da festa é guardado.
++export const FESTA_STATE_KEY = "festa-junina:state"
