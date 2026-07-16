@@ -26,11 +26,11 @@ export type CurrentUser = {
   familiares: string
 }
 
-const PRESENCA_KEY = "festa-presenca-v8"
-const COMIDAS_KEY = "festa-comidas-v8"
-const BALAIO_KEY = "festa-balaio-v8"
-const USER_KEY = "festa-current-user-v8"
-const STEP_KEY = "festa-step-v8"
+const PRESENCA_KEY = "festa-presenca-v9"
+const COMIDAS_KEY = "festa-comidas-v9"
+const BALAIO_KEY = "festa-balaio-v9"
+const USER_KEY = "festa-current-user-v9"
+const STEP_KEY = "festa-step-v9"
 
 export const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/K5mZ872Uiqh1h440Nxc1U2"
 
@@ -52,14 +52,14 @@ export const INITIAL_COMIDAS: Comida[] = [
   { id: "c14", quantidade: "100", comida: "Salgados",                         responsavel: "Fabinho" },
   { id: "c15", quantidade: "100", comida: "Salgados",                         responsavel: "Cidinha" },
   { id: "c16", quantidade: "100", comida: "Salgados",                         responsavel: "João Filho" },
-  { id: "c17", quantidade: "100", comida: "Salgados",                         responsavel: "Gabriel" },
+  { id: "c17", quantidade: "100", comida: "Salgados",                         responsavel: "" },
   { id: "c18", quantidade: "10",  comida: "Cuscuz temperado",                 responsavel: "Marcelo (Rodrigo)" },
   { id: "c19", quantidade: "10",  comida: "Cuscuz temperado",                 responsavel: "" },
   { id: "c20", quantidade: "10",  comida: "Cuscuz temperado",                 responsavel: "" },
   { id: "c21", quantidade: "20",  comida: "mini sanduíches",                  responsavel: "" },
   { id: "c22", quantidade: "20",  comida: "mini sanduíches",                  responsavel: "" },
   { id: "c23", quantidade: "20",  comida: "mini sanduíches",                  responsavel: "" },
-  { id: "c24", quantidade: "10",  comida: "Arroz-doce",                       responsavel: "Regia" },
+  { id: "c24", quantidade: "10",  comida: "Arroz-doce",                       responsavel: "" },
   { id: "c25", quantidade: "10",  comida: "Arroz-doce",                       responsavel: "" },
   { id: "c26", quantidade: "10",  comida: "Arroz-doce",                       responsavel: "" },
   { id: "c27", quantidade: "1",   comida: "Pote de Paçoquinhas",              responsavel: "Silberto" },
@@ -69,9 +69,9 @@ export const INITIAL_COMIDAS: Comida[] = [
   { id: "c31", quantidade: "1",   comida: "Canjica",                          responsavel: "Tia Bia" },
   { id: "c32", quantidade: "20",  comida: "Saquinhos com pipoca",             responsavel: "" },
   { id: "c33", quantidade: "20",  comida: "Saquinhos com pipoca",             responsavel: "" },
-  { id: "c34", quantidade: "10",  comida: "Espigas de Milho para assar",      responsavel: "Regia" },
-  { id: "c35", quantidade: "10",  comida: "Espigas de Milho para assar",      responsavel: "" },
-  { id: "c36", quantidade: "10",  comida: "Espigas de Milho para assar",      responsavel: "" },
+  { id: "c34", quantidade: "10",  comida: "Espigas de Milho para assar",      responsavel: "" },
+  { id: "c35", quantidade: "10",  comida: "Espigas de Milho para assar",      responsavel: "Kaio" },
+  { id: "c36", quantidade: "10",  comida: "Espigas de Milho para assar",      responsavel: "Letícia" },
   { id: "c37", quantidade: "5",   comida: "Pamonhas",                         responsavel: "" },
   { id: "c38", quantidade: "5",   comida: "Pamonhas",                         responsavel: "Fernando" },
   { id: "c39", quantidade: "5",   comida: "Pamonhas",                         responsavel: "" },
@@ -106,7 +106,7 @@ export const INITIAL_BALAIO: BalaioItem[] = [
   { id: "b10", quantidade: "1", item: "pacote de macarrão",         responsavel: "Rodrigo" },
   { id: "b11", quantidade: "1", item: "pacote de macarrão",         responsavel: "" },
   { id: "b12", quantidade: "1", item: "litro de óleo",              responsavel: "Silberto" },
-  { id: "b13", quantidade: "1", item: "caixa de leite",             responsavel: "Gabriel" },
+  { id: "b13", quantidade: "1", item: "caixa de leite",             responsavel: "" },
   { id: "b14", quantidade: "1", item: "pacote de biscoito",         responsavel: "Pedro" },
   { id: "b15", quantidade: "1", item: "molho de tomate",            responsavel: "Thaís Macedo" },
   { id: "b16", quantidade: "1", item: "lata de sardinha",           responsavel: "Thaís Macedo" },
@@ -125,8 +125,6 @@ export const INITIAL_BALAIO: BalaioItem[] = [
   { id: "b29", quantidade: "1", item: "caixa de chocolate",         responsavel: "" },
   { id: "b30", quantidade: "1", item: "kg de farinha de mandioca",  responsavel: "Maria Fernanda" },
   { id: "b31", quantidade: "1", item: "Surpresa",                   responsavel: "Cidinha" },
-  { id: "b32", quantidade: "1", item: "pacote de farinha de trigo",    responsavel: "Regia" },
-  { id: "b33", quantidade: "1", item: "pacote de massa para cuscuz",  responsavel: "Regia" },
 ]
 
 // 60 pessoas confirmadas (lista unificada e consolidada — aliases e duplicatas resolvidos)
