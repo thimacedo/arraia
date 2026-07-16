@@ -1,0 +1,885 @@
+{
+  "geradoEm": "2026-07-16T19:10:54.399098+00:00",
+  "presenca": [
+    {
+      "id": "p1",
+      "nome": "Ana Lúcia",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p2",
+      "nome": "Ana Maria",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p3",
+      "nome": "André",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p4",
+      "nome": "Andrea",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p5",
+      "nome": "Andrezza (Andrezza Lucena)",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p6",
+      "nome": "Angélica",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p7",
+      "nome": "Arthur",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p8",
+      "nome": "Assis",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p9",
+      "nome": "Cidinha",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p10",
+      "nome": "Cris",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p11",
+      "nome": "Daniele",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p12",
+      "nome": "Fabinho",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p13",
+      "nome": "Fernando",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p14",
+      "nome": "Gabriel",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p15",
+      "nome": "Gabriela",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p16",
+      "nome": "Gaspar",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p17",
+      "nome": "Helber",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p18",
+      "nome": "Isabella",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p19",
+      "nome": "Isadora",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p20",
+      "nome": "Istefanie",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p21",
+      "nome": "João",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p22",
+      "nome": "João Filho",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p23",
+      "nome": "João Pedro",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p24",
+      "nome": "Joãozinho",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p25",
+      "nome": "Kaio",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p26",
+      "nome": "Letícia",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p27",
+      "nome": "Lorena",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p28",
+      "nome": "Luana",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p29",
+      "nome": "Lucas (Luquinhas)",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p30",
+      "nome": "Magda",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p31",
+      "nome": "Malu",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p32",
+      "nome": "Manuela",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p33",
+      "nome": "Marcão",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p34",
+      "nome": "Marcelo (Rodrigo)",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p35",
+      "nome": "Maria Fernanda",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p36",
+      "nome": "Neto",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p37",
+      "nome": "Nicole",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p38",
+      "nome": "Nivaldo",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p39",
+      "nome": "Nivianne",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p40",
+      "nome": "Pablo",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p41",
+      "nome": "Pavila",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p42",
+      "nome": "Pedro Helber",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p43",
+      "nome": "Pedro Henrique",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p44",
+      "nome": "Priscila",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p45",
+      "nome": "Regia",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p46",
+      "nome": "Rita",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p47",
+      "nome": "Rosa",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p48",
+      "nome": "Sayonara (Sayô)",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p49",
+      "nome": "Silberto",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p50",
+      "nome": "Simon",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p51",
+      "nome": "Simone",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p52",
+      "nome": "Tetê",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p53",
+      "nome": "Thaís Lucena",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p54",
+      "nome": "Thaís Macedo",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p55",
+      "nome": "Thiago",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p56",
+      "nome": "Tia Bia",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p57",
+      "nome": "Valentina",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p58",
+      "nome": "Willy",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p59",
+      "nome": "Ana Claudia",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    },
+    {
+      "id": "p60",
+      "nome": "Rodrigo",
+      "familiares": "",
+      "criadoEm": "2026-07-10T00:00:00.000Z"
+    }
+  ],
+  "comidas": [
+    {
+      "id": "c1",
+      "quantidade": "1",
+      "comida": "Caldo (tipo a sua escolha)",
+      "responsavel": "Thiago"
+    },
+    {
+      "id": "c2",
+      "quantidade": "1",
+      "comida": "Caldo (tipo a sua escolha)",
+      "responsavel": "Andrezza (Andrezza Lucena)"
+    },
+    {
+      "id": "c3",
+      "quantidade": "20",
+      "comida": "mini Cachorro-quente",
+      "responsavel": "Neto"
+    },
+    {
+      "id": "c4",
+      "quantidade": "20",
+      "comida": "mini cachorro-quente",
+      "responsavel": "Thaís Macedo"
+    },
+    {
+      "id": "c5",
+      "quantidade": "20",
+      "comida": "mini cachorro-quente",
+      "responsavel": ""
+    },
+    {
+      "id": "c6",
+      "quantidade": "10",
+      "comida": "Milho cozido",
+      "responsavel": "Sayonara (Sayô)"
+    },
+    {
+      "id": "c7",
+      "quantidade": "10",
+      "comida": "Milho cozido",
+      "responsavel": "Sayonara (Sayô)"
+    },
+    {
+      "id": "c8",
+      "quantidade": "1",
+      "comida": "Empadão",
+      "responsavel": ""
+    },
+    {
+      "id": "c9",
+      "quantidade": "1",
+      "comida": "Empadão",
+      "responsavel": ""
+    },
+    {
+      "id": "c10",
+      "quantidade": "1",
+      "comida": "Empadão",
+      "responsavel": ""
+    },
+    {
+      "id": "c11",
+      "quantidade": "1",
+      "comida": "Torta salgada",
+      "responsavel": ""
+    },
+    {
+      "id": "c12",
+      "quantidade": "1",
+      "comida": "Torta salgada",
+      "responsavel": ""
+    },
+    {
+      "id": "c13",
+      "quantidade": "1",
+      "comida": "Torta salgada",
+      "responsavel": "Ana Claudia"
+    },
+    {
+      "id": "c14",
+      "quantidade": "100",
+      "comida": "Salgados",
+      "responsavel": "Fabinho"
+    },
+    {
+      "id": "c15",
+      "quantidade": "100",
+      "comida": "Salgados",
+      "responsavel": "Cidinha"
+    },
+    {
+      "id": "c16",
+      "quantidade": "100",
+      "comida": "Salgados",
+      "responsavel": "João Filho"
+    },
+    {
+      "id": "c17",
+      "quantidade": "100",
+      "comida": "Salgados",
+      "responsavel": "Gabriel"
+    },
+    {
+      "id": "c18",
+      "quantidade": "10",
+      "comida": "Cuscuz temperado",
+      "responsavel": "Marcelo (Rodrigo)"
+    },
+    {
+      "id": "c19",
+      "quantidade": "10",
+      "comida": "Cuscuz temperado",
+      "responsavel": ""
+    },
+    {
+      "id": "c20",
+      "quantidade": "10",
+      "comida": "Cuscuz temperado",
+      "responsavel": ""
+    },
+    {
+      "id": "c21",
+      "quantidade": "20",
+      "comida": "mini sanduíches",
+      "responsavel": ""
+    },
+    {
+      "id": "c22",
+      "quantidade": "20",
+      "comida": "mini sanduíches",
+      "responsavel": ""
+    },
+    {
+      "id": "c23",
+      "quantidade": "20",
+      "comida": "mini sanduíches",
+      "responsavel": ""
+    },
+    {
+      "id": "c24",
+      "quantidade": "10",
+      "comida": "Arroz-doce",
+      "responsavel": "Regia"
+    },
+    {
+      "id": "c25",
+      "quantidade": "10",
+      "comida": "Arroz-doce",
+      "responsavel": ""
+    },
+    {
+      "id": "c26",
+      "quantidade": "10",
+      "comida": "Arroz-doce",
+      "responsavel": ""
+    },
+    {
+      "id": "c27",
+      "quantidade": "1",
+      "comida": "Pote de Paçoquinhas",
+      "responsavel": "Silberto"
+    },
+    {
+      "id": "c28",
+      "quantidade": "1",
+      "comida": "Bolo de milho",
+      "responsavel": "Istefanie"
+    },
+    {
+      "id": "c29",
+      "quantidade": "1",
+      "comida": "Bolo de macaxeira",
+      "responsavel": "Rosa"
+    },
+    {
+      "id": "c30",
+      "quantidade": "1",
+      "comida": "Bolo de cenoura com chocolate",
+      "responsavel": "Rodrigo"
+    },
+    {
+      "id": "c31",
+      "quantidade": "1",
+      "comida": "Canjica",
+      "responsavel": "Tia Bia"
+    },
+    {
+      "id": "c32",
+      "quantidade": "20",
+      "comida": "Saquinhos com pipoca",
+      "responsavel": ""
+    },
+    {
+      "id": "c33",
+      "quantidade": "20",
+      "comida": "Saquinhos com pipoca",
+      "responsavel": ""
+    },
+    {
+      "id": "c34",
+      "quantidade": "10",
+      "comida": "Espigas de Milho para assar",
+      "responsavel": "Regia"
+    },
+    {
+      "id": "c35",
+      "quantidade": "10",
+      "comida": "Espigas de Milho para assar",
+      "responsavel": ""
+    },
+    {
+      "id": "c36",
+      "quantidade": "10",
+      "comida": "Espigas de Milho para assar",
+      "responsavel": ""
+    },
+    {
+      "id": "c37",
+      "quantidade": "5",
+      "comida": "Pamonhas",
+      "responsavel": ""
+    },
+    {
+      "id": "c38",
+      "quantidade": "5",
+      "comida": "Pamonhas",
+      "responsavel": "Fernando"
+    },
+    {
+      "id": "c39",
+      "quantidade": "5",
+      "comida": "Pamonhas",
+      "responsavel": ""
+    },
+    {
+      "id": "c40",
+      "quantidade": "5",
+      "comida": "Pamonhas",
+      "responsavel": ""
+    },
+    {
+      "id": "c41",
+      "quantidade": "30",
+      "comida": "Pratos descartáveis",
+      "responsavel": "André"
+    },
+    {
+      "id": "c42",
+      "quantidade": "30",
+      "comida": "Pratos descartáveis",
+      "responsavel": "Thaís Lucena"
+    },
+    {
+      "id": "c43",
+      "quantidade": "30",
+      "comida": "Pratos descartáveis",
+      "responsavel": "Lucas (Luquinhas)"
+    },
+    {
+      "id": "c44",
+      "quantidade": "20",
+      "comida": "Cubas p/ caldo descartáveis",
+      "responsavel": "Magda"
+    },
+    {
+      "id": "c45",
+      "quantidade": "20",
+      "comida": "Cubas p/ caldo descartáveis",
+      "responsavel": "Magda"
+    },
+    {
+      "id": "c46",
+      "quantidade": "50",
+      "comida": "Garfos",
+      "responsavel": "Cris"
+    },
+    {
+      "id": "c47",
+      "quantidade": "50",
+      "comida": "Garfos",
+      "responsavel": "Thaís Lucena"
+    },
+    {
+      "id": "c48",
+      "quantidade": "50",
+      "comida": "Colheres",
+      "responsavel": "Lucas (Luquinhas)"
+    },
+    {
+      "id": "c49",
+      "quantidade": "50",
+      "comida": "Colheres",
+      "responsavel": "Lucas (Luquinhas)"
+    },
+    {
+      "id": "c50",
+      "quantidade": "50",
+      "comida": "Colheres",
+      "responsavel": "Lucas (Luquinhas)"
+    },
+    {
+      "id": "c51",
+      "quantidade": "100",
+      "comida": "Copos descartáveis",
+      "responsavel": "João Filho"
+    },
+    {
+      "id": "c52",
+      "quantidade": "100",
+      "comida": "Copos descartáveis",
+      "responsavel": "Isabella"
+    },
+    {
+      "id": "c53",
+      "quantidade": "100",
+      "comida": "Copos descartáveis",
+      "responsavel": "Maria Fernanda"
+    }
+  ],
+  "balaio": [
+    {
+      "id": "b1",
+      "quantidade": "1",
+      "item": "kg de arroz",
+      "responsavel": "Cidinha"
+    },
+    {
+      "id": "b2",
+      "quantidade": "1",
+      "item": "kg de feijão",
+      "responsavel": "Rosa"
+    },
+    {
+      "id": "b3",
+      "quantidade": "1",
+      "item": "pacote de macarrão",
+      "responsavel": "Sayonara (Sayô)"
+    },
+    {
+      "id": "b4",
+      "quantidade": "1",
+      "item": "kg de açúcar",
+      "responsavel": "Andrezza (Andrezza Lucena)"
+    },
+    {
+      "id": "b5",
+      "quantidade": "1",
+      "item": "pacote de café",
+      "responsavel": "Fabinho"
+    },
+    {
+      "id": "b6",
+      "quantidade": "1",
+      "item": "pacote de café",
+      "responsavel": "André"
+    },
+    {
+      "id": "b7",
+      "quantidade": "1",
+      "item": "pacote de farinha de trigo",
+      "responsavel": "Ana Claudia"
+    },
+    {
+      "id": "b8",
+      "quantidade": "1",
+      "item": "pacote de fubá",
+      "responsavel": "Thaís Lucena"
+    },
+    {
+      "id": "b9",
+      "quantidade": "1",
+      "item": "pacote de fubá",
+      "responsavel": "Thaís Lucena"
+    },
+    {
+      "id": "b10",
+      "quantidade": "1",
+      "item": "pacote de macarrão",
+      "responsavel": "Rodrigo"
+    },
+    {
+      "id": "b11",
+      "quantidade": "1",
+      "item": "pacote de macarrão",
+      "responsavel": ""
+    },
+    {
+      "id": "b12",
+      "quantidade": "1",
+      "item": "litro de óleo",
+      "responsavel": "Silberto"
+    },
+    {
+      "id": "b13",
+      "quantidade": "1",
+      "item": "caixa de leite",
+      "responsavel": "Gabriel"
+    },
+    {
+      "id": "b14",
+      "quantidade": "1",
+      "item": "pacote de biscoito",
+      "responsavel": "Pedro"
+    },
+    {
+      "id": "b15",
+      "quantidade": "1",
+      "item": "molho de tomate",
+      "responsavel": "Thaís Macedo"
+    },
+    {
+      "id": "b16",
+      "quantidade": "1",
+      "item": "lata de sardinha",
+      "responsavel": "Thaís Macedo"
+    },
+    {
+      "id": "b17",
+      "quantidade": "1",
+      "item": "pacote de milho de pipoca",
+      "responsavel": "Marcelo (Rodrigo)"
+    },
+    {
+      "id": "b18",
+      "quantidade": "1",
+      "item": "pacote de canjica",
+      "responsavel": "João Filho"
+    },
+    {
+      "id": "b19",
+      "quantidade": "1",
+      "item": "pacote de amendoim",
+      "responsavel": "Sayonara (Sayô)"
+    },
+    {
+      "id": "b20",
+      "quantidade": "1",
+      "item": "vinho",
+      "responsavel": "Magda"
+    },
+    {
+      "id": "b21",
+      "quantidade": "1",
+      "item": "coca cola",
+      "responsavel": "João Filho"
+    },
+    {
+      "id": "b22",
+      "quantidade": "1",
+      "item": "leite condensado",
+      "responsavel": "Neto"
+    },
+    {
+      "id": "b23",
+      "quantidade": "1",
+      "item": "leite condensado",
+      "responsavel": "Lucas (Luquinhas)"
+    },
+    {
+      "id": "b24",
+      "quantidade": "1",
+      "item": "queijo coalho",
+      "responsavel": ""
+    },
+    {
+      "id": "b25",
+      "quantidade": "1",
+      "item": "creme de leite",
+      "responsavel": "Tia Bia"
+    },
+    {
+      "id": "b26",
+      "quantidade": "1",
+      "item": "creme de leite",
+      "responsavel": "Isabella"
+    },
+    {
+      "id": "b27",
+      "quantidade": "1",
+      "item": "goiabada",
+      "responsavel": "Istefanie"
+    },
+    {
+      "id": "b28",
+      "quantidade": "1",
+      "item": "goiabada",
+      "responsavel": "Lorena"
+    },
+    {
+      "id": "b29",
+      "quantidade": "1",
+      "item": "caixa de chocolate",
+      "responsavel": ""
+    },
+    {
+      "id": "b30",
+      "quantidade": "1",
+      "item": "kg de farinha de mandioca",
+      "responsavel": "Maria Fernanda"
+    },
+    {
+      "id": "b31",
+      "quantidade": "1",
+      "item": "Surpresa",
+      "responsavel": "Cidinha"
+    },
+    {
+      "id": "b32",
+      "quantidade": "1",
+      "item": "pacote de farinha de trigo",
+      "responsavel": "Regia"
+    },
+    {
+      "id": "b33",
+      "quantidade": "1",
+      "item": "pacote de massa para cuscuz",
+      "responsavel": "Regia"
+    }
+  ]
+}
