@@ -187,7 +187,7 @@ export function buildWhatsAppText(
   balaio: BalaioItem[]
 ): string {
   const lines: string[] = []
-  lines.push("🎉 *FESTA JUNINA — CONFIRMAÇÃO* 🎉\n")
+  lines.push("\u{1F389} *FESTA JUNINA — CONFIRMAÇÃO* \u{1F389}\n")
 
   // Presença
   const totalFamiliares = presenca.reduce((sum, p) => {
@@ -196,7 +196,7 @@ export function buildWhatsAppText(
       : 0
     return sum + 1 + famCount
   }, 0)
-  lines.push(`📋 *LISTA DE PRESENÇA* (${presenca.length} responsáveis, ~${totalFamiliares} pessoas):`)
+  lines.push(`\u{1F4CB} *LISTA DE PRESENÇA* (${presenca.length} responsáveis, ~${totalFamiliares} pessoas):`)
   if (presenca.length === 0) {
     lines.push("  (nenhuma confirmação ainda)")
   } else {
@@ -209,7 +209,7 @@ export function buildWhatsAppText(
 
   // Comidas
   const comAssinadas = comidas.filter((c) => c.responsavel.trim()).length
-  lines.push(`🌽 *COMIDAS TÍPICAS* (${comAssinadas}/${comidas.length} assinados):`)
+  lines.push(`\u{1F33D} *COMIDAS TÍPICAS* (${comAssinadas}/${comidas.length} assinados):`)
   comidas.forEach((c, i) => {
     const r = c.responsavel.trim() ? ` — *${c.responsavel}*` : " — (livre)"
     lines.push(`${i + 1}. ${c.quantidade}x ${c.comida}${r}`)
@@ -218,7 +218,7 @@ export function buildWhatsAppText(
 
   // Balaio
   const balAssinados = balaio.filter((b) => b.responsavel.trim()).length
-  lines.push(`🧺 *BALAIO JUNINO* (${balAssinados}/${balaio.length} assinados):`)
+  lines.push(`\u{1F9FA} *BALAIO JUNINO* (${balAssinados}/${balaio.length} assinados):`)
   balaio.forEach((b, i) => {
     const r = b.responsavel.trim() ? ` — *${b.responsavel}*` : " — (livre)"
     lines.push(`${i + 1}. ${b.quantidade} ${b.item}${r}`)
